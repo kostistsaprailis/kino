@@ -1,0 +1,26 @@
+drop table if exists entries;
+create table entries (
+	id integer primary key autoincrement,
+	draw integer not null,
+	draw_date text not null,
+	res1 integer not null,
+	res2 integer not null,
+	res3 integer not null,
+	res4 integer not null,
+	res5 integer not null,
+	res6 integer not null,
+	res7 integer not null,
+	res8 integer not null,
+	res9 integer not null,
+	res10 integer not null,
+	res11 integer not null,
+	res12 integer not null,
+	res13 integer not null,
+	res14 integer not null,
+	res15 integer not null,
+	res16 integer not null,
+	res17 integer not null,
+	res18 integer not null,
+	res19 integer not null,
+	res20 integer not null
+);
