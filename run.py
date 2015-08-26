@@ -1,6 +1,6 @@
-import kino_network as kn
+import KinoNetwork as kn
 import numpy as np
-import kino_loader as kl
+import DataLoader as dl
 import heapq
 
 import time
@@ -15,9 +15,11 @@ def list_gen(inp_data):
 	return input_data
 		
 
-n = kn.Network([80,100,200,400,800,400,200,100,80])
+n = kn.KinoNetwork([80,100,200,400,200,100,80])
 
-data = kl.return_data('2015-01-02 10:00','2015-01-05 21:30')
+dataloader = dl.DataLoader()
+
+data = dataloader.returnData('2015-01-02 10:00','2015-01-05 21:30')
 
 counter = [0,0,0,0,0,0]
 

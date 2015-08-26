@@ -7,8 +7,8 @@ import sqlite3
 # Import the datetime library.
 from datetime import datetime
 
-# The dataLoader class is used to retrieve the kino results from the database
-class dataLoader(object):
+# The DataLoader class is used to retrieve the kino results from the database
+class DataLoader(object):
 	# Constructor
 	def __init__(self, database='db/kino.db'):
 		'''class constructor to create and initialize the database path.'''
