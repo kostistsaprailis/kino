@@ -15,7 +15,7 @@ def list_gen(inp_data):
 	return input_data
 		
 
-n = kn.Network([80,100,200,400,800,1600,3200,1600,800,400,200,100,80])
+n = kn.Network([80,100,200,400,800,400,200,100,80])
 
 data = kl.return_data('2015-01-02 10:00','2015-01-05 21:30')
 
@@ -23,23 +23,18 @@ counter = [0,0,0,0,0,0]
 
 for i in range(0,len(data)-1):
 	input_data = list_gen(data[i])
+	
 	output = n.feedforward(input_data).tolist()
 	output2 = heapq.nlargest(20,output)
 	output3 = []
+	
 	for key in output2:
 		output3.append(output.index(key)+1)
-	#print(output3)
-	#print("Prediction: " + str(output3))
-	#print("Chances: " + str(output2[0]))
-	#print("Chances:")
-	#for key in output2:
-	#	print(key*100)
 	chance = 0
 	next_input = list_gen(data[i+1])
-	counter2 = 0
 	for y in range(4):
 		if (output3[y] in data[i+1]):
-			chance += 25
+			chance += 1
 
 	print("Prediction: " + str(output3[0]) + "," + str(output3[1]) + "," + str(output3[2]) + "," + str(output3[3]))
 	print("Outcomes: " + str(data[i+1]))
@@ -47,16 +42,16 @@ for i in range(0,len(data)-1):
 	if (chance == 0):
 		counter[0] += 1
 		counter[5] += 1
-	if (chance == 25):
+	if (chance == 1):
 		counter[1] += 1
 		counter[5] += 1
-	if (chance == 50):
+	if (chance == 2):
 		counter[2] += 1
 		counter[5] += 1
-	if (chance == 75):
+	if (chance == 3):
 		counter[3] += 1
 		counter[5] += 1
-	if (chance == 100):
+	if (chance == 4):
 		counter[4] += 1
 		counter[5] += 1
 
@@ -67,5 +62,6 @@ print(str(counter[0]) + " 0%")
 print(str(counter[1]) + " 25%")
 print(str(counter[2]) + " 50%")
 print(str(counter[3]) + " 75%")	
+print(str(counter[4]) + " 100%")	
 
 print("\n--- %s seconds ---" % (time.time() - start_time))
